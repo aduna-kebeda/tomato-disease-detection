@@ -180,7 +180,7 @@ export default function DestinationsPage() {
 
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Explore <span className="text-pink-500">Ethiopia's</span>{" "}
+            Explore <span className="text-[#E61C5D]">Ethiopia's</span>{" "}
             <span className="relative inline-block">
               <span className="relative z-10">Destinations</span>
               <span className="absolute bottom-2 left-0 right-0 h-3 bg-white/20 rounded-full -z-0"></span>
@@ -188,7 +188,7 @@ export default function DestinationsPage() {
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
             From ancient <span className="text-yellow-400">historical sites</span> to breathtaking{" "}
-            <span className="text-pink-500">natural wonders</span>
+            <span className="text-[#E61C5D]">natural wonders</span>
           </p>
         </div>
       </div>
@@ -198,7 +198,7 @@ export default function DestinationsPage() {
         <div className="bg-white rounded-xl shadow-lg p-6 mb-10 -mt-20 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#E61C5D] h-5 w-5" />
               <Input
                 type="text"
                 placeholder="Search destinations..."
@@ -239,11 +239,11 @@ export default function DestinationsPage() {
 
           <div className="flex justify-between items-center mt-6">
             <div className="flex items-center">
-              <Filter className="h-5 w-5 mr-2 text-pink-500" />
+              <Filter className="h-5 w-5 mr-2 text-[#E61C5D]" />
               <span className="text-gray-700 font-medium">Active Filters:</span>
               {categoryFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setCategoryFilter("all")}
                 >
                   {categoryFilter} ×
@@ -251,7 +251,7 @@ export default function DestinationsPage() {
               )}
               {regionFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setRegionFilter("all")}
                 >
                   {regionFilter} ×
@@ -260,7 +260,7 @@ export default function DestinationsPage() {
               {(categoryFilter !== "all" || regionFilter !== "all" || searchQuery) && (
                 <Button
                   variant="link"
-                  className="ml-2 text-pink-500 p-0 h-auto"
+                  className="ml-2 text-[#E61C5D] p-0 h-auto rounded-xl"
                   onClick={() => {
                     setCategoryFilter("all")
                     setRegionFilter("all")
@@ -281,10 +281,10 @@ export default function DestinationsPage() {
         {/* Tabs */}
         <Tabs defaultValue="all" className="mb-8" onValueChange={setActiveTab}>
           <TabsList className="bg-pink-50">
-            <TabsTrigger value="all" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="all" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               All Destinations
             </TabsTrigger>
-            <TabsTrigger value="featured" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="featured" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               Featured
             </TabsTrigger>
           </TabsList>
@@ -293,7 +293,7 @@ export default function DestinationsPage() {
         {/* Destinations Grid */}
         {filteredDestinations.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-pink-500 text-6xl mb-4">🔍</div>
+            <div className="text-[#E61C5D] text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-bold mb-2">No destinations found</h3>
             <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
             <Button
@@ -302,7 +302,7 @@ export default function DestinationsPage() {
                 setRegionFilter("all")
                 setSearchQuery("")
               }}
-              className="bg-pink-500 hover:bg-pink-600"
+              className="bg-[#E61C5D] hover:bg-pink-700 rounded-full rounded-xl"
             >
               Reset Filters
             </Button>
@@ -321,7 +321,7 @@ export default function DestinationsPage() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-pink-500 text-sm font-medium py-1 px-3 rounded-full flex items-center">
+                  <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm text-[#E61C5D] text-sm font-medium py-1 px-3 rounded-full flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-4 w-4 mr-1 text-yellow-500 fill-yellow-500"
@@ -343,12 +343,12 @@ export default function DestinationsPage() {
                 </div>
                 <CardContent className="p-6">
                   <div className="flex items-center text-gray-500 mb-2">
-                    <MapPin className="h-4 w-4 mr-1 text-pink-500" />
+                    <MapPin className="h-4 w-4 mr-1 text-[#E61C5D]" />
                     <span className="text-sm">{destination.location}</span>
                   </div>
                   <h3 className="text-2xl font-bold mb-2">{destination.name}</h3>
                   <p className="text-gray-600 mb-4">{destination.description}</p>
-                  <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                  <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-600 rounded-full">
                     <Link href={`/destinations/${destination.id}`}>Explore</Link>
                   </Button>
                 </CardContent>

@@ -70,11 +70,11 @@ const TestimonialsSectionEnhanced = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center mb-4">
-            <Quote className="h-6 w-6 text-pink-500 mr-2" />
-            <span className="text-pink-500 font-medium uppercase tracking-wider">Testimonials</span>
+            <Quote className="h-6 w-6 text-[#E61C5D] mr-2" />
+            <span className="text-[#E61C5D] font-medium uppercase tracking-wider">Testimonials</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            What Our <span className="text-pink-500">Travelers</span> Say
+            What Our <span className="text-[#E61C5D]">Travelers</span> Say
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Real experiences from travelers who have explored Ethiopia with our platform
@@ -142,7 +142,7 @@ const TestimonialsSectionEnhanced = () => {
               variant="outline"
               size="icon"
               onClick={prevSlide}
-              className="rounded-full border-pink-200 hover:bg-pink-50 hover:text-pink-500"
+              className="rounded-full border-pink-200 hover:bg-pink-50 hover:text-[#E61C5D]"
             >
               <ChevronLeft className="h-5 w-5" />
             </Button>
@@ -161,7 +161,7 @@ const TestimonialsSectionEnhanced = () => {
               variant="outline"
               size="icon"
               onClick={nextSlide}
-              className="rounded-full border-pink-200 hover:bg-pink-50 hover:text-pink-500"
+              className="rounded-full border-pink-200 hover:bg-pink-50 hover:text-[#E61C5D]"
             >
               <ChevronRight className="h-5 w-5" />
             </Button>

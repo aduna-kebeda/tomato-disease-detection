@@ -83,7 +83,7 @@ export default function SettingsPage() {
     return (
       <div className="container mx-auto py-8 flex items-center justify-center h-[70vh]">
         <div className="flex flex-col items-center space-y-4">
-          <Loader2 className="h-12 w-12 animate-spin text-pink-500" />
+          <Loader2 className="h-12 w-12 animate-spin text-[#E61C5D]" />
           <p className="text-lg font-medium">Loading settings...</p>
         </div>
       </div>
@@ -105,19 +105,19 @@ export default function SettingsPage() {
               <div className="space-y-4">
                 <Button asChild variant="ghost" className="w-full justify-start">
                   <div>
-                    <User className="mr-2 h-4 w-4 text-pink-500" />
+                    <User className="mr-2 h-4 w-4 text-[#E61C5D]" />
                     Profile
                   </div>
                 </Button>
-                <Button asChild variant="ghost" className="w-full justify-start bg-pink-50 text-pink-500">
+                <Button asChild variant="ghost" className="w-full justify-start bg-pink-50 text-[#E61C5D]">
                   <div>
-                    <Shield className="mr-2 h-4 w-4 text-pink-500" />
+                    <Shield className="mr-2 h-4 w-4 text-[#E61C5D]" />
                     Settings
                   </div>
                 </Button>
                 <Button asChild variant="ghost" className="w-full justify-start">
                   <div>
-                    <Bell className="mr-2 h-4 w-4 text-pink-500" />
+                    <Bell className="mr-2 h-4 w-4 text-[#E61C5D]" />
                     Notifications
                   </div>
                 </Button>
@@ -137,19 +137,19 @@ export default function SettingsPage() {
             <TabsList className="bg-pink-50 mb-6">
               <TabsTrigger
                 value="notifications"
-                className="data-[state=active]:bg-pink-500 data-[state=active]:text-white"
+                className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white"
               >
                 Notifications
               </TabsTrigger>
-              <TabsTrigger value="privacy" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+              <TabsTrigger value="privacy" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
                 Privacy
               </TabsTrigger>
-              <TabsTrigger value="security" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+              <TabsTrigger value="security" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
                 Security
               </TabsTrigger>
               <TabsTrigger
                 value="preferences"
-                className="data-[state=active]:bg-pink-500 data-[state=active]:text-white"
+                className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white"
               >
                 Preferences
               </TabsTrigger>
@@ -159,7 +159,7 @@ export default function SettingsPage() {
               <Card className="overflow-hidden rounded-xl shadow-lg border-0">
                 <CardHeader className="bg-pink-50">
                   <div className="flex items-center">
-                    <Bell className="h-5 w-5 mr-2 text-pink-500" />
+                    <Bell className="h-5 w-5 mr-2 text-[#E61C5D]" />
                     <CardTitle>Notification Settings</CardTitle>
                   </div>
                   <CardDescription>Manage how you receive notifications and updates</CardDescription>
@@ -247,7 +247,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
 
-                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-pink-500 hover:bg-pink-600">
+                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                     {isSaving ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -268,7 +268,7 @@ export default function SettingsPage() {
               <Card className="overflow-hidden rounded-xl shadow-lg border-0">
                 <CardHeader className="bg-pink-50">
                   <div className="flex items-center">
-                    <Shield className="h-5 w-5 mr-2 text-pink-500" />
+                    <Shield className="h-5 w-5 mr-2 text-[#E61C5D]" />
                     <CardTitle>Privacy Settings</CardTitle>
                   </div>
                   <CardDescription>Control your privacy and data sharing preferences</CardDescription>
@@ -346,7 +346,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
 
-                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-pink-500 hover:bg-pink-600">
+                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                     {isSaving ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -367,7 +367,7 @@ export default function SettingsPage() {
               <Card className="overflow-hidden rounded-xl shadow-lg border-0">
                 <CardHeader className="bg-pink-50">
                   <div className="flex items-center">
-                    <Lock className="h-5 w-5 mr-2 text-pink-500" />
+                    <Lock className="h-5 w-5 mr-2 text-[#E61C5D]" />
                     <CardTitle>Security Settings</CardTitle>
                   </div>
                   <CardDescription>Manage your account security and authentication options</CardDescription>
@@ -388,7 +388,7 @@ export default function SettingsPage() {
                         <Label htmlFor="confirmPassword">Confirm New Password</Label>
                         <Input id="confirmPassword" type="password" placeholder="••••••••" />
                       </div>
-                      <Button className="bg-pink-500 hover:bg-pink-600">Update Password</Button>
+                      <Button className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">Update Password</Button>
                     </div>
 
                     <Separator />
@@ -434,7 +434,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
 
-                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-pink-500 hover:bg-pink-600">
+                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                     {isSaving ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -455,7 +455,7 @@ export default function SettingsPage() {
               <Card className="overflow-hidden rounded-xl shadow-lg border-0">
                 <CardHeader className="bg-pink-50">
                   <div className="flex items-center">
-                    <Globe className="h-5 w-5 mr-2 text-pink-500" />
+                    <Globe className="h-5 w-5 mr-2 text-[#E61C5D]" />
                     <CardTitle>Preferences</CardTitle>
                   </div>
                   <CardDescription>Customize your app experience and regional settings</CardDescription>
@@ -539,7 +539,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
 
-                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-pink-500 hover:bg-pink-600">
+                  <Button onClick={handleSaveSettings} disabled={isSaving} className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                     {isSaving ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />

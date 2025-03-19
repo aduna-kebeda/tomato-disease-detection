@@ -86,7 +86,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-brand">Ethiopia Travel</span>
+              <span className="text-2xl font-bold text-primary-brand">Ethio Travel</span>
             </Link>
           </div>
 
@@ -157,7 +157,7 @@ const Navbar = () => {
                     Login
                   </Link>
                 </Button>
-                <Button asChild>
+                <Button asChild className="rounded-full bg-[#E61C5D]">
                   <Link href="/register">Register</Link>
                 </Button>
               </div>
@@ -237,7 +237,7 @@ const Navbar = () => {
                       Login
                     </Link>
                   </Button>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full rounded-full [#E61C5D]">
                     <Link href="/register" onClick={() => setIsOpen(false)}>
                       Register
                     </Link>

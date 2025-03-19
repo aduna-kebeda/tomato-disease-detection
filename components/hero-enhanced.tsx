@@ -55,7 +55,7 @@ const HeroEnhanced = () => {
       <div className="relative h-full flex flex-col items-start justify-center px-6 sm:px-10 lg:px-20 max-w-7xl mx-auto">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-            From <span className="text-pink-500">Highlands</span> to Heritage:{" "}
+            From <span className="text-[#E61C5D]">Highlands</span> to Heritage:{" "}
             <span className="relative inline-block">
               <span className="relative z-10">Explore</span>
               <span className="absolute bottom-2 left-0 right-0 h-3 bg-white/20 rounded-full -z-0"></span>
@@ -81,7 +81,7 @@ const HeroEnhanced = () => {
                 className="pl-10 h-12 bg-transparent border-0 text-white placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-offset-0"
               />
             </div>
-            <Button type="submit" size="lg" className="ml-2 bg-pink-500 hover:bg-pink-600">
+            <Button type="submit" size="lg" className="ml-2 bg-[#E61C5D] hover:bg-pink-700 rounded-full">
               <Search className="h-5 w-5 mr-2" />
               Search
             </Button>
@@ -90,13 +90,13 @@ const HeroEnhanced = () => {
           {/* Location and Date */}
           <div className="flex flex-wrap items-center mt-8 gap-6">
             <div className="flex items-center text-white/80">
-              <MapPin className="h-4 w-4 mr-1 text-pink-500" />
+              <MapPin className="h-4 w-4 mr-1 text-[#E61C5D]" />
               <span className="text-sm">Addis Ababa, Dire Dawa</span>
             </div>
             <div className="flex items-center text-white/80">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 mr-1 text-pink-500"
+                className="h-4 w-4 mr-1 text-[#E61C5D]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

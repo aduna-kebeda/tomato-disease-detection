@@ -191,7 +191,7 @@ export default function ChatbotClientPage() {
           disabled={isLoading}
           className="flex-grow"
         />
-        <Button type="submit" disabled={isLoading || !input.trim()}>
+        <Button type="submit" className="bg-[#E61C5D] rounded-full" disabled={isLoading || !input.trim()}>
           <Send className="h-4 w-4 mr-2" />
           Send
         </Button>

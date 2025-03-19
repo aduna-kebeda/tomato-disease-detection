@@ -193,7 +193,7 @@ export default function BusinessesPage() {
 
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            <span className="text-pink-500">Business</span>{" "}
+            <span className="text-[#E61C5D]">Business</span>{" "}
             <span className="relative inline-block">
               <span className="relative z-10">Directory</span>
               <span className="absolute bottom-2 left-0 right-0 h-3 bg-white/20 rounded-full -z-0"></span>
@@ -201,7 +201,7 @@ export default function BusinessesPage() {
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
             Find the best <span className="text-yellow-400">hotels</span>,{" "}
-            <span className="text-pink-500">restaurants</span>, and tour operators in Ethiopia
+            <span className="text-[#E61C5D]">restaurants</span>, and tour operators in Ethiopia
           </p>
         </div>
       </div>
@@ -210,7 +210,7 @@ export default function BusinessesPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2">
-              Local <span className="text-pink-500">Businesses</span>
+              Local <span className="text-[#E61C5D]">Businesses</span>
             </h2>
             <p className="text-gray-600">Discover trusted businesses to enhance your Ethiopian experience</p>
           </div>
@@ -220,7 +220,7 @@ export default function BusinessesPage() {
         <div className="bg-white rounded-xl shadow-lg p-6 mb-10 -mt-20 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#E61C5D] h-5 w-5" />
               <Input
                 type="text"
                 placeholder="Search businesses..."
@@ -262,11 +262,11 @@ export default function BusinessesPage() {
 
           <div className="flex justify-between items-center mt-6">
             <div className="flex items-center">
-              <Filter className="h-5 w-5 mr-2 text-pink-500" />
+              <Filter className="h-5 w-5 mr-2 text-[#E61C5D]" />
               <span className="text-gray-700 font-medium">Active Filters:</span>
               {categoryFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setCategoryFilter("all")}
                 >
                   {categoryFilter} ×
@@ -274,7 +274,7 @@ export default function BusinessesPage() {
               )}
               {locationFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setLocationFilter("all")}
                 >
                   {locationFilter} ×
@@ -283,7 +283,7 @@ export default function BusinessesPage() {
               {(categoryFilter !== "all" || locationFilter !== "all" || searchQuery) && (
                 <Button
                   variant="link"
-                  className="ml-2 text-pink-500 p-0 h-auto"
+                  className="ml-2 text-[#E61C5D] p-0 h-auto"
                   onClick={() => {
                     setCategoryFilter("all")
                     setLocationFilter("all")
@@ -304,10 +304,10 @@ export default function BusinessesPage() {
         {/* Tabs */}
         <Tabs defaultValue="all" className="mb-8" onValueChange={setActiveTab}>
           <TabsList className="bg-pink-50">
-            <TabsTrigger value="all" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="all" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               All Businesses
             </TabsTrigger>
-            <TabsTrigger value="featured" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="featured" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               Featured
             </TabsTrigger>
           </TabsList>
@@ -316,7 +316,7 @@ export default function BusinessesPage() {
         {/* Businesses Grid */}
         {filteredBusinesses.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-pink-500 text-6xl mb-4">🔍</div>
+            <div className="text-[#E61C5D] text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-bold mb-2">No businesses found</h3>
             <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
             <Button
@@ -325,7 +325,7 @@ export default function BusinessesPage() {
                 setLocationFilter("all")
                 setSearchQuery("")
               }}
-              className="bg-pink-500 hover:bg-pink-600"
+              className="bg-[#E61C5D] hover:bg-pink-700 rounded-full"
             >
               Reset Filters
             </Button>
@@ -357,7 +357,7 @@ export default function BusinessesPage() {
                 </div>
                 <CardContent className="p-6">
                   <div className="flex justify-between items-center mb-2">
-                    <Badge variant="secondary" className="bg-pink-50 text-pink-500">
+                    <Badge variant="secondary" className="bg-pink-50 text-[#E61C5D]">
                       {business.category}
                     </Badge>
                     <div className="flex items-center">
@@ -369,7 +369,7 @@ export default function BusinessesPage() {
                   <h3 className="text-2xl font-bold mb-2">{business.name}</h3>
 
                   <div className="flex items-center text-sm text-gray-500 mb-3">
-                    <MapPin className="h-4 w-4 mr-1 text-pink-500" />
+                    <MapPin className="h-4 w-4 mr-1 text-[#E61C5D]" />
                     <span>{business.location}</span>
                   </div>
 
@@ -377,16 +377,16 @@ export default function BusinessesPage() {
 
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center text-sm">
-                      <Phone className="h-4 w-4 mr-2 text-pink-500" />
+                      <Phone className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>{business.phone}</span>
                     </div>
                     <div className="flex items-center text-sm">
-                      <Globe className="h-4 w-4 mr-2 text-pink-500" />
+                      <Globe className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>{business.website}</span>
                     </div>
                   </div>
 
-                  <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                  <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                     <Link href={`/businesses/${business.id}`}>View Details</Link>
                   </Button>
                 </CardContent>

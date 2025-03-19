@@ -83,16 +83,16 @@ const SafetyIndicatorsEnhanced = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-16">
           <div className="md:w-1/2 mb-8 md:mb-0">
             <div className="inline-flex items-center justify-center mb-4">
-              <Shield className="h-6 w-6 text-pink-500 mr-2" />
-              <span className="text-pink-500 font-medium uppercase tracking-wider">Travel Safety</span>
+              <Shield className="h-6 w-6 text-[#E61C5D] mr-2" />
+              <span className="text-[#E61C5D] font-medium uppercase tracking-wider">Travel Safety</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Stay <span className="text-pink-500">Safe</span> During Your Journey
+              Stay <span className="text-[#E61C5D]">Safe</span> During Your Journey
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl">
               Essential safety information and resources to ensure a secure and enjoyable experience in Ethiopia
             </p>
-            <Button asChild className="mt-6 bg-pink-500 hover:bg-pink-600">
+            <Button asChild className="mt-6 bg-[#E61C5D] hover:bg-pink-700 rounded-full">
               <Link href="/safety">
                 View Detailed Safety Information
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -159,7 +159,7 @@ const SafetyIndicatorsEnhanced = () => {
                   <ul className="space-y-1">
                     {item.tips.map((tip, index) => (
                       <li key={index} className="text-sm flex items-start">
-                        <span className="text-pink-500 mr-2">•</span>
+                        <span className="text-[#E61C5D] mr-2">•</span>
                         {tip}
                       </li>
                     ))}
@@ -174,7 +174,7 @@ const SafetyIndicatorsEnhanced = () => {
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
             Our safety information is regularly updated with the latest travel advisories and local conditions
           </p>
-          <Button asChild className="bg-pink-500 hover:bg-pink-600">
+          <Button asChild className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">
             <Link href="/emergency-contacts">
               View Emergency Contacts
               <ArrowRight className="ml-2 h-4 w-4" />

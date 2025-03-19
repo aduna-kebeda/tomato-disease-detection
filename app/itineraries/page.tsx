@@ -185,7 +185,7 @@ export default function ItinerariesPage() {
 
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            <span className="text-pink-500">Plan</span> Your Perfect{" "}
+            <span className="text-[#E61C5D]">Plan</span> Your Perfect{" "}
             <span className="relative inline-block">
               <span className="relative z-10">Journey</span>
               <span className="absolute bottom-2 left-0 right-0 h-3 bg-white/20 rounded-full -z-0"></span>
@@ -202,11 +202,11 @@ export default function ItinerariesPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2">
-              Travel <span className="text-pink-500">Itineraries</span>
+              Travel <span className="text-[#E61C5D]">Itineraries</span>
             </h2>
             <p className="text-gray-600">Explore our curated collection of Ethiopian adventures</p>
           </div>
-          <Button className="mt-4 md:mt-0 bg-pink-500 hover:bg-pink-600" asChild>
+          <Button className="mt-4 md:mt-0 bg-[#E61C5D] hover:bg-pink-700 rounded-full" asChild>
             <Link href="/itineraries/create">
               <Plus className="h-4 w-4 mr-2" />
               Create Itinerary
@@ -218,7 +218,7 @@ export default function ItinerariesPage() {
         <div className="bg-white rounded-xl shadow-lg p-6 mb-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#E61C5D] h-5 w-5" />
               <Input
                 type="text"
                 placeholder="Search itineraries..."
@@ -229,7 +229,7 @@ export default function ItinerariesPage() {
             </div>
 
             <Select value={durationFilter} onValueChange={setDurationFilter}>
-              <SelectTrigger className="border-pink-100 focus:border-pink-500 focus:ring-pink-500">
+              <SelectTrigger className="border-pink-100 focus:border-pink-500 rounded-full focus:ring-pink-500">
                 <SelectValue placeholder="Filter by duration" />
               </SelectTrigger>
               <SelectContent>
@@ -257,11 +257,11 @@ export default function ItinerariesPage() {
 
           <div className="flex justify-between items-center mt-6">
             <div className="flex items-center">
-              <Filter className="h-5 w-5 mr-2 text-pink-500" />
+              <Filter className="h-5 w-5 mr-2 text-[#E61C5D]" />
               <span className="text-gray-700 font-medium">Active Filters:</span>
               {durationFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setDurationFilter("all")}
                 >
                   {durationFilter} ×
@@ -269,7 +269,7 @@ export default function ItinerariesPage() {
               )}
               {typeFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setTypeFilter("all")}
                 >
                   {typeFilter} ×
@@ -278,7 +278,7 @@ export default function ItinerariesPage() {
               {(durationFilter !== "all" || typeFilter !== "all" || searchQuery) && (
                 <Button
                   variant="link"
-                  className="ml-2 text-pink-500 p-0 h-auto"
+                  className="ml-2 text-[#E61C5D] p-0 h-auto"
                   onClick={() => {
                     setDurationFilter("all")
                     setTypeFilter("all")
@@ -299,10 +299,10 @@ export default function ItinerariesPage() {
         {/* Tabs */}
         <Tabs defaultValue="all" className="mb-8" onValueChange={setActiveTab}>
           <TabsList className="bg-pink-50">
-            <TabsTrigger value="all" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="all" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               All Itineraries
             </TabsTrigger>
-            <TabsTrigger value="featured" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="featured" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               Featured
             </TabsTrigger>
           </TabsList>
@@ -312,7 +312,7 @@ export default function ItinerariesPage() {
         {activeTab === "featured" && (
           <div className="mb-12">
             <h2 className="text-2xl font-bold mb-6">
-              Featured <span className="text-pink-500">Itineraries</span>
+              Featured <span className="text-[#E61C5D]">Itineraries</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {filteredItineraries
@@ -339,28 +339,28 @@ export default function ItinerariesPage() {
 
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center text-sm">
-                          <Clock className="h-4 w-4 mr-2 text-pink-500" />
+                          <Clock className="h-4 w-4 mr-2 text-[#E61C5D]" />
                           <span>{itinerary.duration}</span>
                         </div>
                         <div className="flex items-center text-sm">
-                          <Calendar className="h-4 w-4 mr-2 text-pink-500" />
+                          <Calendar className="h-4 w-4 mr-2 text-[#E61C5D]" />
                           <span>Best: {itinerary.bestSeason}</span>
                         </div>
                         <div className="flex items-center text-sm">
-                          <Users className="h-4 w-4 mr-2 text-pink-500" />
+                          <Users className="h-4 w-4 mr-2 text-[#E61C5D]" />
                           <span>{itinerary.groupSize}</span>
                         </div>
                       </div>
 
                       <div className="flex flex-wrap gap-2 mb-4">
                         {itinerary.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary" className="bg-pink-50 text-pink-500">
+                          <Badge key={tag} variant="secondary" className="bg-pink-50 text-[#E61C5D]">
                             {tag}
                           </Badge>
                         ))}
                       </div>
 
-                      <Button asChild className="w-full mt-auto bg-pink-500 hover:bg-pink-600">
+                      <Button asChild className="w-full mt-auto bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                         <Link href={`/itineraries/${itinerary.id}`}>
                           View Itinerary
                           <ArrowRight className="ml-2 h-4 w-4" />
@@ -376,7 +376,7 @@ export default function ItinerariesPage() {
         {/* All Itineraries */}
         {filteredItineraries.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-pink-500 text-6xl mb-4">🔍</div>
+            <div className="text-[#E61C5D] text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-bold mb-2">No itineraries found</h3>
             <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
             <Button
@@ -385,7 +385,7 @@ export default function ItinerariesPage() {
                 setTypeFilter("all")
                 setSearchQuery("")
               }}
-              className="bg-pink-500 hover:bg-pink-600"
+              className="bg-[#E61C5D] hover:bg-pink-700 rounded-full"
             >
               Reset Filters
             </Button>
@@ -416,28 +416,28 @@ export default function ItinerariesPage() {
 
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center text-sm">
-                      <Clock className="h-4 w-4 mr-2 text-pink-500" />
+                      <Clock className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>{itinerary.duration}</span>
                     </div>
                     <div className="flex items-center text-sm">
-                      <Calendar className="h-4 w-4 mr-2 text-pink-500" />
+                      <Calendar className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>Best: {itinerary.bestSeason}</span>
                     </div>
                     <div className="flex items-center text-sm">
-                      <Users className="h-4 w-4 mr-2 text-pink-500" />
+                      <Users className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>{itinerary.groupSize}</span>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {itinerary.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="bg-pink-50 text-pink-500">
+                      <Badge key={tag} variant="secondary" className="bg-pink-50 text-[#E61C5D]">
                         {tag}
                       </Badge>
                     ))}
                   </div>
 
-                  <Button asChild className="w-full mt-auto bg-pink-500 hover:bg-pink-600">
+                  <Button asChild className="w-full mt-auto bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                     <Link href={`/itineraries/${itinerary.id}`}>
                       View Itinerary
                       <ArrowRight className="ml-2 h-4 w-4" />

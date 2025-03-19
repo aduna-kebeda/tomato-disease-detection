@@ -45,17 +45,17 @@ const UpcomingEventsEnhanced = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-12">
           <div>
             <div className="inline-flex items-center justify-center mb-4">
-              <Calendar className="h-6 w-6 text-pink-500 mr-2" />
-              <span className="text-pink-500 font-medium uppercase tracking-wider">Cultural Experiences</span>
+              <Calendar className="h-6 w-6 text-[#E61C5D] mr-2" />
+              <span className="text-[#E61C5D] font-medium uppercase tracking-wider">Cultural Experiences</span>
             </div>
             <h2 className="text-4xl font-bold mb-4">
-              Upcoming <span className="text-pink-500">Events</span>
+              Upcoming <span className="text-[#E61C5D]">Events</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl">
               Don't miss these authentic Ethiopian cultural experiences and celebrations
             </p>
           </div>
-          <Button asChild className="mt-6 md:mt-0 bg-pink-500 hover:bg-pink-600">
+          <Button asChild className="mt-6 md:mt-0 bg-[#E61C5D] hover:bg-pink-700 rounded-full">
             <Link href="/events">
               View All Events
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -101,20 +101,20 @@ const UpcomingEventsEnhanced = () => {
 
                 <div className="space-y-2 mb-6">
                   <div className="flex items-center text-sm">
-                    <Calendar className="h-4 w-4 mr-2 text-pink-500" />
+                    <Calendar className="h-4 w-4 mr-2 text-[#E61C5D]" />
                     <span>{event.date}</span>
                   </div>
                   <div className="flex items-center text-sm">
-                    <Clock className="h-4 w-4 mr-2 text-pink-500" />
+                    <Clock className="h-4 w-4 mr-2 text-[#E61C5D]" />
                     <span>{event.time}</span>
                   </div>
                   <div className="flex items-center text-sm">
-                    <MapPin className="h-4 w-4 mr-2 text-pink-500" />
+                    <MapPin className="h-4 w-4 mr-2 text-[#E61C5D]" />
                     <span>{event.location}</span>
                   </div>
                 </div>
 
-                <Button asChild variant="outline" className="w-full border-pink-500 text-pink-500 hover:bg-pink-50">
+                <Button asChild variant="outline" className="w-full border-[#E61C5D] text-[#E61C5D] rounded-full hover:bg-pink-50">
                   <Link href={`/events/${event.id}`}>
                     Event Details
                     <ArrowRight className="ml-2 h-4 w-4" />

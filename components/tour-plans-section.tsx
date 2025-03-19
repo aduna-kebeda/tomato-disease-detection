@@ -58,7 +58,7 @@ const TourPlansSection = () => {
 
           {/* Right side - Content */}
           <div className="lg:w-1/2">
-            <div className="text-pink-500 font-medium mb-2">TRENDS</div>
+            <div className="text-[#E61C5D] font-medium mb-2">TRENDS</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Popular Tour Plans</h2>
             <p className="text-gray-600 mb-8">
               At Ethiopia Travel, our most beloved tour packages combine incredible sights at competitive prices. From
@@ -99,8 +99,8 @@ const TourPlansSection = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-pink-500 hover:bg-pink-600">View All Tour Plans</Button>
-              <Button variant="outline" className="border-pink-500 text-pink-500 hover:bg-pink-50">
+              <Button className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">View All Tour Plans</Button>
+              <Button variant="outline" className="border-[#E61C5D] text-[#E61C5D] rounded-full hover:bg-pink-50">
                 Contact Us
               </Button>
             </div>

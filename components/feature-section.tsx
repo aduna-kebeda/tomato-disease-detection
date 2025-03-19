@@ -7,25 +7,25 @@ const FeatureSection = () => {
       icon: <MapPin className="h-8 w-8" />,
       title: "Explore Destinations",
       description: "Discover beautiful locations across Ethiopia, from ancient churches to stunning landscapes",
-      color: "bg-pink-100 text-pink-500",
+      color: "bg-pink-100 text-[#E61C5D]",
     },
     {
       icon: <Calendar className="h-8 w-8" />,
       title: "Plan Itineraries",
       description: "Create and customize your perfect travel plan with our AI-powered itinerary builder",
-      color: "bg-pink-100 text-pink-500",
+      color: "bg-pink-100 text-[#E61C5D]",
     },
     {
       icon: <Building className="h-8 w-8" />,
       title: "Find Businesses",
       description: "Discover hotels, restaurants, and tour operators with authentic reviews and ratings",
-      color: "bg-pink-100 text-pink-500",
+      color: "bg-pink-100 text-[#E61C5D]",
     },
     {
       icon: <Star className="h-8 w-8" />,
       title: "AI Recommendations",
       description: "Get personalized travel suggestions based on your preferences and interests",
-      color: "bg-pink-100 text-pink-500",
+      color: "bg-pink-100 text-[#E61C5D]",
     },
   ]
 

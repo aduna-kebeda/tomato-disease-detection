@@ -48,7 +48,7 @@ const DestinationsGrid = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">
-            Explore <span className="text-pink-500">Breathtaking</span> Destinations
+            Explore <span className="text-[#E61C5D]">Breathtaking</span> Destinations
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover the most beautiful and fascinating places across Ethiopia
@@ -78,12 +78,12 @@ const DestinationsGrid = () => {
               </div>
               <div className="p-5">
                 <div className="flex items-center text-gray-500 mb-2">
-                  <MapPin className="h-4 w-4 mr-1 text-pink-500" />
+                  <MapPin className="h-4 w-4 mr-1 text-[#E61C5D]" />
                   <span className="text-sm">{destination.location}</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">{destination.name}</h3>
                 <p className="text-gray-600 mb-4 line-clamp-2">{destination.description}</p>
-                <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                   <Link href={`/destinations/${destination.id}`}>Explore</Link>
                 </Button>
               </div>
@@ -92,7 +92,7 @@ const DestinationsGrid = () => {
         </div>
 
         <div className="flex justify-center mt-12">
-          <Button variant="outline" asChild className="border-pink-500 text-pink-500 hover:bg-pink-50">
+          <Button variant="outline" asChild className="border-[#E61C5D] text-[#E61C5D] rounded-full hover:bg-pink-50">
             <Link href="/destinations">View All Destinations</Link>
           </Button>
         </div>

@@ -145,7 +145,7 @@ export default function MyItinerariesPage() {
     return (
       <div className="container mx-auto py-8 flex items-center justify-center h-[70vh]">
         <div className="flex flex-col items-center space-y-4">
-          <Loader2 className="h-12 w-12 animate-spin text-pink-500" />
+          <Loader2 className="h-12 w-12 animate-spin text-[#E61C5D]" />
           <p className="text-lg font-medium">Loading your itineraries...</p>
         </div>
       </div>
@@ -159,7 +159,7 @@ export default function MyItinerariesPage() {
           <h1 className="text-3xl font-bold mb-2">My Itineraries</h1>
           <p className="text-muted-foreground">Manage and view your saved travel plans</p>
         </div>
-        <Button className="mt-4 md:mt-0 bg-pink-500 hover:bg-pink-600" asChild>
+        <Button className="mt-4 md:mt-0 bg-[#E61C5D] hover:bg-pink-700 rounded-full" asChild>
           <Link href="/itineraries/create">
             <Plus className="h-4 w-4 mr-2" />
             Create New Itinerary
@@ -171,7 +171,7 @@ export default function MyItinerariesPage() {
       <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500 h-5 w-5" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#E61C5D] h-5 w-5" />
             <Input
               type="text"
               placeholder="Search your itineraries..."
@@ -182,13 +182,13 @@ export default function MyItinerariesPage() {
           </div>
 
           <div className="flex items-center">
-            <Filter className="h-5 w-5 mr-2 text-pink-500" />
+            <Filter className="h-5 w-5 mr-2 text-[#E61C5D]" />
             <span className="text-gray-700 font-medium mr-2">Status:</span>
             <div className="flex space-x-2">
               <Button
                 variant={statusFilter === "all" ? "default" : "outline"}
                 size="sm"
-                className={statusFilter === "all" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                className={statusFilter === "all" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                 onClick={() => setStatusFilter("all")}
               >
                 All
@@ -196,7 +196,7 @@ export default function MyItinerariesPage() {
               <Button
                 variant={statusFilter === "upcoming" ? "default" : "outline"}
                 size="sm"
-                className={statusFilter === "upcoming" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                className={statusFilter === "upcoming" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                 onClick={() => setStatusFilter("upcoming")}
               >
                 Upcoming
@@ -204,7 +204,7 @@ export default function MyItinerariesPage() {
               <Button
                 variant={statusFilter === "completed" ? "default" : "outline"}
                 size="sm"
-                className={statusFilter === "completed" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                className={statusFilter === "completed" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                 onClick={() => setStatusFilter("completed")}
               >
                 Completed
@@ -212,7 +212,7 @@ export default function MyItinerariesPage() {
               <Button
                 variant={statusFilter === "draft" ? "default" : "outline"}
                 size="sm"
-                className={statusFilter === "draft" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                className={statusFilter === "draft" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                 onClick={() => setStatusFilter("draft")}
               >
                 Drafts
@@ -224,16 +224,16 @@ export default function MyItinerariesPage() {
 
       <Tabs defaultValue="all" className="mb-8" onValueChange={setActiveTab}>
         <TabsList className="bg-pink-50">
-          <TabsTrigger value="all" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+          <TabsTrigger value="all" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
             All Itineraries
           </TabsTrigger>
-          <TabsTrigger value="upcoming" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+          <TabsTrigger value="upcoming" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
             Upcoming
           </TabsTrigger>
-          <TabsTrigger value="completed" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+          <TabsTrigger value="completed" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
             Completed
           </TabsTrigger>
-          <TabsTrigger value="drafts" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+          <TabsTrigger value="drafts" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
             Drafts
           </TabsTrigger>
         </TabsList>
@@ -245,7 +245,7 @@ export default function MyItinerariesPage() {
               <p className="text-muted-foreground mb-6">
                 {searchQuery ? "Try adjusting your search criteria" : "You haven't created any itineraries yet"}
               </p>
-              <Button asChild className="bg-pink-500 hover:bg-pink-600">
+              <Button asChild className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                 <Link href="/itineraries/create">
                   <Plus className="h-4 w-4 mr-2" />
                   Create Your First Itinerary
@@ -293,12 +293,12 @@ export default function MyItinerariesPage() {
 
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center text-sm">
-                        <Clock className="h-4 w-4 mr-2 text-pink-500" />
+                        <Clock className="h-4 w-4 mr-2 text-[#E61C5D]" />
                         <span>{itinerary.duration}</span>
                       </div>
                       {itinerary.startDate && (
                         <div className="flex items-center text-sm">
-                          <Calendar className="h-4 w-4 mr-2 text-pink-500" />
+                          <Calendar className="h-4 w-4 mr-2 text-[#E61C5D]" />
                           <span>
                             {new Date(itinerary.startDate).toLocaleDateString()} -{" "}
                             {new Date(itinerary.endDate).toLocaleDateString()}
@@ -306,7 +306,7 @@ export default function MyItinerariesPage() {
                         </div>
                       )}
                       <div className="flex items-center text-sm">
-                        <MapPin className="h-4 w-4 mr-2 text-pink-500" />
+                        <MapPin className="h-4 w-4 mr-2 text-[#E61C5D]" />
                         <span>{itinerary.locations.join(", ")}</span>
                       </div>
                     </div>
@@ -332,7 +332,7 @@ export default function MyItinerariesPage() {
                       </Button>
                     </div>
 
-                    <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                    <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                       <Link href={`/itineraries/${itinerary.id}`}>
                         View Itinerary
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -351,7 +351,7 @@ export default function MyItinerariesPage() {
             <div className="text-center py-12 bg-muted rounded-lg">
               <h3 className="text-xl font-bold mb-2">No upcoming itineraries</h3>
               <p className="text-muted-foreground mb-6">You don't have any upcoming trips planned</p>
-              <Button asChild className="bg-pink-500 hover:bg-pink-600">
+              <Button asChild className="bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                 <Link href="/itineraries/create">
                   <Plus className="h-4 w-4 mr-2" />
                   Plan Your Next Trip
@@ -385,12 +385,12 @@ export default function MyItinerariesPage() {
 
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center text-sm">
-                        <Clock className="h-4 w-4 mr-2 text-pink-500" />
+                        <Clock className="h-4 w-4 mr-2 text-[#E61C5D]" />
                         <span>{itinerary.duration}</span>
                       </div>
                       {itinerary.startDate && (
                         <div className="flex items-center text-sm">
-                          <Calendar className="h-4 w-4 mr-2 text-pink-500" />
+                          <Calendar className="h-4 w-4 mr-2 text-[#E61C5D]" />
                           <span>
                             {new Date(itinerary.startDate).toLocaleDateString()} -{" "}
                             {new Date(itinerary.endDate).toLocaleDateString()}
@@ -398,7 +398,7 @@ export default function MyItinerariesPage() {
                         </div>
                       )}
                       <div className="flex items-center text-sm">
-                        <MapPin className="h-4 w-4 mr-2 text-pink-500" />
+                        <MapPin className="h-4 w-4 mr-2 text-[#E61C5D]" />
                         <span>{itinerary.locations.join(", ")}</span>
                       </div>
                     </div>
@@ -424,7 +424,7 @@ export default function MyItinerariesPage() {
                       </Button>
                     </div>
 
-                    <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                    <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                       <Link href={`/itineraries/${itinerary.id}`}>
                         View Itinerary
                         <ArrowRight className="ml-2 h-4 w-4" />

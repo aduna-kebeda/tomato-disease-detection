@@ -200,11 +200,11 @@ const RecommendationSectionEnhanced = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-4">
-            <Sparkles className="h-6 w-6 text-pink-500 mr-2" />
-            <span className="text-pink-500 font-medium uppercase tracking-wider">AI-Powered</span>
+            <Sparkles className="h-6 w-6 text-[#E61C5D] mr-2" />
+            <span className="text-[#E61C5D] font-medium uppercase tracking-wider">AI-Powered</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Personalized <span className="text-pink-500">Recommendations</span>
+            Personalized <span className="text-[#E61C5D]">Recommendations</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Our AI analyzes your preferences to create the perfect Ethiopian experience just for you
@@ -255,7 +255,7 @@ const RecommendationSectionEnhanced = () => {
               Our AI will analyze your preferences and create personalized recommendations
             </p>
             <Button
-              className="bg-pink-500 hover:bg-pink-600 text-lg py-6 px-8"
+              className="bg-[#E61C5D] hover:bg-pink-700 rounded-full text-lg py-6 px-8"
               onClick={() => handleInterestChange(interests)}
               disabled={isLoading}
             >
@@ -323,7 +323,7 @@ const RecommendationSectionEnhanced = () => {
               <CardContent className="p-6">
                 <div className="flex justify-between items-center mb-2">
                   <div className="flex items-center text-sm text-gray-500">
-                    <MapPin className="h-4 w-4 mr-1 text-pink-500" />
+                    <MapPin className="h-4 w-4 mr-1 text-[#E61C5D]" />
                     <span>{item.location}</span>
                   </div>
                   <div className="flex items-center">
@@ -335,19 +335,19 @@ const RecommendationSectionEnhanced = () => {
                 <h3 className="text-xl font-bold mb-2">{item.title}</h3>
 
                 <div className="flex items-center text-sm text-gray-500 mb-4">
-                  <Calendar className="h-4 w-4 mr-1 text-pink-500" />
+                  <Calendar className="h-4 w-4 mr-1 text-[#E61C5D]" />
                   <span>Best time: {item.bestTime}</span>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {item.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="bg-pink-50 text-pink-500 border-pink-200">
+                    <Badge key={tag} variant="outline" className="bg-pink-50 text-[#E61C5D] border-pink-200">
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                   <Link href={`/${item.type}s/${item.id}`}>Explore</Link>
                 </Button>
               </CardContent>

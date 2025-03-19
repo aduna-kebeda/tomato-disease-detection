@@ -196,7 +196,7 @@ export default function EventsPage() {
 
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            <span className="text-pink-500">Events</span> &{" "}
+            <span className="text-[#E61C5D]">Events</span> &{" "}
             <span className="relative inline-block">
               <span className="relative z-10">Festivals</span>
               <span className="absolute bottom-2 left-0 right-0 h-3 bg-white/20 rounded-full -z-0"></span>
@@ -213,7 +213,7 @@ export default function EventsPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2">
-              Upcoming <span className="text-pink-500">Events</span>
+              Upcoming <span className="text-[#E61C5D]">Events</span>
             </h2>
             <p className="text-gray-600">
               Discover Ethiopia's vibrant cultural events, religious ceremonies, and festivals
@@ -225,7 +225,7 @@ export default function EventsPage() {
         <div className="bg-white rounded-xl shadow-lg p-6 mb-10 -mt-20 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#E61C5D] h-5 w-5" />
               <Input
                 type="text"
                 placeholder="Search events..."
@@ -272,11 +272,11 @@ export default function EventsPage() {
 
           <div className="flex justify-between items-center mt-6">
             <div className="flex items-center">
-              <Filter className="h-5 w-5 mr-2 text-pink-500" />
+              <Filter className="h-5 w-5 mr-2 text-[#E61C5D]" />
               <span className="text-gray-700 font-medium">Active Filters:</span>
               {categoryFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setCategoryFilter("all")}
                 >
                   {categoryFilter} ×
@@ -284,7 +284,7 @@ export default function EventsPage() {
               )}
               {monthFilter !== "all" && (
                 <Badge
-                  className="ml-2 bg-pink-100 text-pink-500 hover:bg-pink-200"
+                  className="ml-2 bg-pink-100 text-[#E61C5D] hover:bg-pink-200"
                   onClick={() => setMonthFilter("all")}
                 >
                   {monthFilter} ×
@@ -293,7 +293,7 @@ export default function EventsPage() {
               {(categoryFilter !== "all" || monthFilter !== "all" || searchQuery) && (
                 <Button
                   variant="link"
-                  className="ml-2 text-pink-500 p-0 h-auto"
+                  className="ml-2 text-[#E61C5D] p-0 h-auto"
                   onClick={() => {
                     setCategoryFilter("all")
                     setMonthFilter("all")
@@ -314,13 +314,13 @@ export default function EventsPage() {
         {/* Tabs */}
         <Tabs defaultValue="all" className="mb-8" onValueChange={setActiveTab}>
           <TabsList className="bg-pink-50">
-            <TabsTrigger value="all" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="all" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               All Events
             </TabsTrigger>
-            <TabsTrigger value="featured" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="featured" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               Featured
             </TabsTrigger>
-            <TabsTrigger value="upcoming" className="data-[state=active]:bg-pink-500 data-[state=active]:text-white">
+            <TabsTrigger value="upcoming" className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white">
               Upcoming
             </TabsTrigger>
           </TabsList>
@@ -329,7 +329,7 @@ export default function EventsPage() {
         {/* Events Grid */}
         {filteredEvents.length === 0 ? (
           <div className="text-center py-20">
-            <div className="text-pink-500 text-6xl mb-4">🔍</div>
+            <div className="text-[#E61C5D] text-6xl mb-4">🔍</div>
             <h3 className="text-2xl font-bold mb-2">No events found</h3>
             <p className="text-gray-600 mb-6">Try adjusting your search or filter criteria</p>
             <Button
@@ -338,7 +338,7 @@ export default function EventsPage() {
                 setMonthFilter("all")
                 setSearchQuery("")
               }}
-              className="bg-pink-500 hover:bg-pink-600"
+              className="bg-[#E61C5D] hover:bg-pink-700 rounded-full"
             >
               Reset Filters
             </Button>
@@ -359,7 +359,7 @@ export default function EventsPage() {
                   />
                   {event.featured && (
                     <div className="absolute top-4 right-4">
-                      <Badge variant="outline" className="bg-white/80 backdrop-blur-sm text-pink-500 border-0">
+                      <Badge variant="outline" className="bg-white/80 backdrop-blur-sm text-[#E61C5D] border-0">
                         Featured
                       </Badge>
                     </div>
@@ -374,20 +374,20 @@ export default function EventsPage() {
 
                   <div className="space-y-2 mb-6">
                     <div className="flex items-center text-sm">
-                      <Calendar className="h-4 w-4 mr-2 text-pink-500" />
+                      <Calendar className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>{event.date}</span>
                     </div>
                     <div className="flex items-center text-sm">
-                      <Clock className="h-4 w-4 mr-2 text-pink-500" />
+                      <Clock className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>{event.time}</span>
                     </div>
                     <div className="flex items-center text-sm">
-                      <MapPin className="h-4 w-4 mr-2 text-pink-500" />
+                      <MapPin className="h-4 w-4 mr-2 text-[#E61C5D]" />
                       <span>{event.location}</span>
                     </div>
                   </div>
 
-                  <Button asChild variant="outline" className="w-full border-pink-500 text-pink-500 hover:bg-pink-50">
+                  <Button asChild variant="outline" className="w-full border-[#E61C5D] text-[#E61C5D] rounded-full hover:bg-pink-50">
                     <Link href={`/events/${event.id}`}>
                       Event Details
                       <ArrowRight className="ml-2 h-4 w-4" />

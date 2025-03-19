@@ -282,11 +282,11 @@ export default function AIRecommendationsClient() {
 
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
           <div className="inline-flex items-center justify-center mb-4">
-            <Sparkles className="h-6 w-6 text-pink-500 mr-2" />
-            <span className="text-pink-500 font-medium uppercase tracking-wider">AI-Powered</span>
+            <Sparkles className="h-6 w-6 text-[#E61C5D] mr-2" />
+            <span className="text-[#E61C5D] font-medium uppercase tracking-wider">AI-Powered</span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Personalized <span className="text-pink-500">Recommendations</span>
+            Personalized <span className="text-[#E61C5D]">Recommendations</span>
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
             Let our AI create your perfect Ethiopian adventure based on your preferences
@@ -349,21 +349,21 @@ export default function AIRecommendationsClient() {
                     <div className="flex space-x-2">
                       <Button
                         variant={budget === "budget" ? "default" : "outline"}
-                        className={budget === "budget" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                        className={budget === "budget" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                         onClick={() => setBudget("budget")}
                       >
                         Budget
                       </Button>
                       <Button
                         variant={budget === "medium" ? "default" : "outline"}
-                        className={budget === "medium" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                        className={budget === "medium" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                         onClick={() => setBudget("medium")}
                       >
                         Medium
                       </Button>
                       <Button
                         variant={budget === "luxury" ? "default" : "outline"}
-                        className={budget === "luxury" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                        className={budget === "luxury" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                         onClick={() => setBudget("luxury")}
                       >
                         Luxury
@@ -378,21 +378,21 @@ export default function AIRecommendationsClient() {
                     <div className="flex space-x-2">
                       <Button
                         variant={travelStyle === "relaxed" ? "default" : "outline"}
-                        className={travelStyle === "relaxed" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                        className={travelStyle === "relaxed" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                         onClick={() => setTravelStyle("relaxed")}
                       >
                         Relaxed
                       </Button>
                       <Button
                         variant={travelStyle === "balanced" ? "default" : "outline"}
-                        className={travelStyle === "balanced" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                        className={travelStyle === "balanced" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                         onClick={() => setTravelStyle("balanced")}
                       >
                         Balanced
                       </Button>
                       <Button
                         variant={travelStyle === "active" ? "default" : "outline"}
-                        className={travelStyle === "active" ? "bg-pink-500 hover:bg-pink-600" : ""}
+                        className={travelStyle === "active" ? "bg-[#E61C5D] hover:bg-pink-700 rounded-full" : ""}
                         onClick={() => setTravelStyle("active")}
                       >
                         Active
@@ -401,7 +401,7 @@ export default function AIRecommendationsClient() {
                   </div>
 
                   <Button
-                    className="w-full bg-pink-500 hover:bg-pink-600"
+                    className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full"
                     onClick={generateRecommendations}
                     disabled={isGenerating}
                   >
@@ -430,7 +430,7 @@ export default function AIRecommendationsClient() {
                     {interests.length > 0 ? interests.map((i) => ` ${i}`).join(", ") : " various experiences"}
                     with a {budget} budget and a {travelStyle} pace.
                   </p>
-                  <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                  <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                     <Link href="/itineraries/create">
                       Create Custom Itinerary
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -445,13 +445,13 @@ export default function AIRecommendationsClient() {
           <div className="lg:col-span-2 space-y-6">
             {!hasGenerated ? (
               <div className="bg-pink-50 rounded-xl p-8 text-center h-96 flex flex-col items-center justify-center">
-                <Sparkles className="h-12 w-12 text-pink-500 mb-4" />
+                <Sparkles className="h-12 w-12 text-[#E61C5D] mb-4" />
                 <h2 className="text-2xl font-bold mb-2">Personalized Recommendations</h2>
                 <p className="text-gray-600 mb-6 max-w-md">
                   Select your travel preferences and generate AI-powered recommendations tailored just for you.
                 </p>
                 <Button
-                  className="bg-pink-500 hover:bg-pink-600"
+                  className="bg-[#E61C5D] hover:bg-pink-700 rounded-full"
                   onClick={generateRecommendations}
                   disabled={isGenerating}
                 >
@@ -473,7 +473,7 @@ export default function AIRecommendationsClient() {
                 <div className="bg-white rounded-xl shadow-lg p-6">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div className="relative flex-grow">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-pink-500 h-5 w-5" />
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#E61C5D] h-5 w-5" />
                       <Input
                         type="text"
                         placeholder="Search recommendations..."
@@ -483,31 +483,31 @@ export default function AIRecommendationsClient() {
                       />
                     </div>
                     <div className="flex items-center">
-                      <Filter className="h-5 w-5 mr-2 text-pink-500" />
+                      <Filter className="h-5 w-5 mr-2 text-[#E61C5D]" />
                       <span className="text-gray-700 font-medium mr-2">Filter:</span>
                       <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
                         <TabsList className="bg-pink-50">
                           <TabsTrigger
                             value="all"
-                            className="data-[state=active]:bg-pink-500 data-[state=active]:text-white"
+                            className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white"
                           >
                             All
                           </TabsTrigger>
                           <TabsTrigger
                             value="destination"
-                            className="data-[state=active]:bg-pink-500 data-[state=active]:text-white"
+                            className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white"
                           >
                             Destinations
                           </TabsTrigger>
                           <TabsTrigger
                             value="itinerary"
-                            className="data-[state=active]:bg-pink-500 data-[state=active]:text-white"
+                            className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white"
                           >
                             Itineraries
                           </TabsTrigger>
                           <TabsTrigger
                             value="event"
-                            className="data-[state=active]:bg-pink-500 data-[state=active]:text-white"
+                            className="data-[state=active]:bg-[#E61C5D] rounded-full data-[state=active]:text-white"
                           >
                             Events
                           </TabsTrigger>
@@ -573,7 +573,7 @@ export default function AIRecommendationsClient() {
                         <CardContent className="p-6">
                           <div className="flex justify-between items-center mb-2">
                             <div className="flex items-center text-sm text-gray-500">
-                              <MapPin className="h-4 w-4 mr-1 text-pink-500" />
+                              <MapPin className="h-4 w-4 mr-1 text-[#E61C5D]" />
                               <span>{item.location}</span>
                             </div>
                             <div className="flex items-center">
@@ -586,32 +586,32 @@ export default function AIRecommendationsClient() {
 
                           {item.type === "itinerary" && (
                             <div className="flex items-center text-sm text-gray-500 mb-2">
-                              <Clock className="h-4 w-4 mr-1 text-pink-500" />
+                              <Clock className="h-4 w-4 mr-1 text-[#E61C5D]" />
                               <span>{item.duration}</span>
                             </div>
                           )}
 
                           {item.type === "event" && (
                             <div className="flex items-center text-sm text-gray-500 mb-2">
-                              <Calendar className="h-4 w-4 mr-1 text-pink-500" />
+                              <Calendar className="h-4 w-4 mr-1 text-[#E61C5D]" />
                               <span>{item.date}</span>
                             </div>
                           )}
 
                           <div className="flex items-center text-sm text-gray-500 mb-4">
-                            <Calendar className="h-4 w-4 mr-1 text-pink-500" />
+                            <Calendar className="h-4 w-4 mr-1 text-[#E61C5D]" />
                             <span>Best time: {item.bestTime}</span>
                           </div>
 
                           <div className="flex flex-wrap gap-2 mb-4">
                             {item.tags.map((tag: string) => (
-                              <Badge key={tag} variant="outline" className="bg-pink-50 text-pink-500 border-pink-200">
+                              <Badge key={tag} variant="outline" className="bg-pink-50 text-[#E61C5D] border-pink-200">
                                 {tag}
                               </Badge>
                             ))}
                           </div>
 
-                          <Button asChild className="w-full bg-pink-500 hover:bg-pink-600">
+                          <Button asChild className="w-full bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                             <Link href={`/${item.type}s/${item.id}`}>
                               {item.type === "destination"
                                 ? "Explore"

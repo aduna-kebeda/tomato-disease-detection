@@ -55,17 +55,17 @@ const PopularItinerariesEnhanced = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-12">
           <div>
             <div className="inline-flex items-center justify-center mb-4">
-              <MapPin className="h-6 w-6 text-pink-500 mr-2" />
-              <span className="text-pink-500 font-medium uppercase tracking-wider">Curated Journeys</span>
+              <MapPin className="h-6 w-6 text-[#E61C5D] mr-2" />
+              <span className="text-[#E61C5D] font-medium uppercase tracking-wider">Curated Journeys</span>
             </div>
             <h2 className="text-4xl font-bold mb-4">
-              Popular <span className="text-pink-500">Itineraries</span>
+              Popular <span className="text-[#E61C5D]">Itineraries</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl">
               Discover our carefully crafted travel itineraries to experience the best of Ethiopia
             </p>
           </div>
-          <Button asChild className="mt-6 md:mt-0 bg-pink-500 hover:bg-pink-600">
+          <Button asChild className="mt-6 md:mt-0 bg-[#E61C5D] hover:bg-pink-700 rounded-full">
             <Link href="/itineraries">
               View All Itineraries
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -95,28 +95,28 @@ const PopularItinerariesEnhanced = () => {
 
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center text-sm">
-                    <Clock className="h-4 w-4 mr-2 text-pink-500" />
+                    <Clock className="h-4 w-4 mr-2 text-[#E61C5D]" />
                     <span>{itinerary.duration}</span>
                   </div>
                   <div className="flex items-center text-sm">
-                    <Calendar className="h-4 w-4 mr-2 text-pink-500" />
+                    <Calendar className="h-4 w-4 mr-2 text-[#E61C5D]" />
                     <span>Best: {itinerary.bestSeason}</span>
                   </div>
                   <div className="flex items-center text-sm">
-                    <Users className="h-4 w-4 mr-2 text-pink-500" />
+                    <Users className="h-4 w-4 mr-2 text-[#E61C5D]" />
                     <span>{itinerary.groupSize}</span>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {itinerary.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="bg-pink-50 text-pink-500">
+                    <Badge key={tag} variant="secondary" className="bg-pink-50 text-[#E61C5D]">
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <Button asChild className="w-full mt-auto bg-pink-500 hover:bg-pink-600">
+                <Button asChild className="w-full mt-auto bg-[#E61C5D] hover:bg-pink-700 rounded-full">
                   <Link href={`/itineraries/${itinerary.id}`}>
                     View Itinerary
                     <ArrowRight className="ml-2 h-4 w-4" />
