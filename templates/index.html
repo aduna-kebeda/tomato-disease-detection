@@ -479,6 +479,27 @@
                     'Apply fungicides containing copper or chlorothalonil',
                     'Mulch around plants'
                 ]
+            },
+            'Spider_mites': {
+                name: 'Spider Mites',
+                description: 'Spider mites are tiny pests that cause stippling and yellowing of leaves.',
+                symptoms: 'Tiny yellow or white spots on leaves, webbing on undersides, leaf drop',
+                recommendations: [
+                    'Spray with water to remove mites',
+                    'Use insecticidal soap or neem oil',
+                    'Introduce natural predators like ladybugs',
+                    'Remove heavily infested leaves'
+                ]
+            },
+            'healthy': {
+                name: 'Healthy',
+                description: 'No disease detected. The leaf appears healthy.',
+                symptoms: 'No visible symptoms. Leaf is green and vibrant.',
+                recommendations: [
+                    'Continue regular care',
+                    'Monitor for any changes',
+                    'Maintain good watering and fertilization practices'
+                ]
             }
         };
         
@@ -582,7 +603,12 @@
             const disease = result.predicted_class;
             const confidence = result.confidence;
             const diseaseData = diseaseInfo[disease] || diseaseInfo['healthy'];
-            
+
+            if (!diseaseData) {
+                showAlert('Unknown disease prediction or missing disease information.', 'danger');
+                return;
+            }
+
             // Update main prediction
             document.getElementById('predictedDisease').textContent = diseaseData.name;
             document.getElementById('confidenceBadge').textContent = `${(confidence * 100).toFixed(1)}% Confidence`;
@@ -598,6 +624,10 @@
             
             result.top_predictions.forEach((pred, index) => {
                 const predData = diseaseInfo[pred.class] || diseaseInfo['healthy'];
+                if (!predData) {
+                    showAlert(`Unknown top prediction class: ${pred.class}`, 'danger');
+                    return; // Skip this prediction
+                }
                 const predDiv = document.createElement('div');
                 predDiv.className = 'd-flex justify-content-between align-items-center mb-2';
                 predDiv.innerHTML = `

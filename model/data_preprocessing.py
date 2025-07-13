@@ -21,16 +21,16 @@ class DataPreprocessor:
         """
         self.data_dir = data_dir
         self.class_names = [
-            'Tomato_mosaic_virus',
-            'Target_Spot',
-            'Bacterial_spot',
-            'Tomato_Yellow_Leaf_Curl_Virus',
-            'Late_blight',
-            'Leaf_Mold',
-            'Early_blight',
-            'Spider_mites Two-spotted_spider_mite',
+            'Tomato___Bacterial_spot',
+            'Tomato___Early_blight',
             'Tomato___healthy',
-            'Septoria_leaf_spot'
+            'Tomato___Late_blight',
+            'Tomato___Leaf_Mold',
+            'Tomato___Septoria_leaf_spot',
+            'Tomato___Spider_mites Two-spotted_spider_mite',
+            'Tomato___Target_Spot',
+            'Tomato___Tomato_mosaic_virus',
+            'Tomato___Tomato_Yellow_Leaf_Curl_Virus'
         ]
         
     def organize_dataset(self, source_dir: str, target_dir: str = None) -> str:

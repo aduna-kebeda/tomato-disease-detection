@@ -33,7 +33,7 @@ class TomatoDiseaseTrainer:
         
         # Training parameters
         self.batch_size = 32
-        self.epochs = 50
+        self.epochs = 7
         self.learning_rate = 0.001
         self.input_shape = (224, 224, 3)
         

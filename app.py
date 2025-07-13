@@ -107,14 +107,33 @@ def predict_disease(image_path):
         # Get top 3 predictions
         top_predictions = sorted_predictions[:3]
         
+        # Print the predicted class for debugging
+        print("Predicted class from model:", predicted_class)
+
+        # Mapping from model class names to frontend keys
+        class_name_map = {
+            "Tomato___Bacterial_spot": "Bacterial_spot",
+            "Tomato___Early_blight": "Early_blight",
+            "Tomato___Late_blight": "Late_blight",
+            "Tomato___Leaf_Mold": "Leaf_Mold",
+            "Tomato___Septoria_leaf_spot": "Septoria_leaf_spot",
+            "Tomato___Spider_mites Two-spotted_spider_mite": "Spider_mites",
+            "Tomato___Target_Spot": "Target_Spot",
+            "Tomato___Tomato_Yellow_Leaf_Curl_Virus": "Tomato_Yellow_Leaf_Curl_Virus",
+            "Tomato___Tomato_mosaic_virus": "Tomato_mosaic_virus",
+            "Tomato___healthy": "healthy"
+        }
+        # Map the predicted class to the frontend key
+        frontend_class = class_name_map.get(predicted_class, predicted_class)
+
         # Create result dictionary
         result = {
-            'predicted_class': predicted_class,
+            'predicted_class': frontend_class,
             'confidence': float(confidence_scores[predicted_class]),
             'all_predictions': confidence_scores,
             'top_predictions': [
                 {
-                    'class': class_name,
+                    'class': class_name_map.get(class_name, class_name),
                     'confidence': float(confidence),
                     'percentage': float(confidence * 100)
                 }
@@ -126,7 +145,9 @@ def predict_disease(image_path):
         return result
         
     except Exception as e:
+        import traceback
         print(f"Error during prediction: {str(e)}")
+        traceback.print_exc()
         return {
             'error': f'Prediction failed: {str(e)}',
             'timestamp': datetime.now().isoformat()
@@ -171,6 +192,9 @@ def predict():
         return jsonify(result)
         
     except Exception as e:
+        import traceback
+        print('Error during /predict:', e)
+        traceback.print_exc()
         return jsonify({'error': f'Server error: {str(e)}'}), 500
 
 @app.route('/health')

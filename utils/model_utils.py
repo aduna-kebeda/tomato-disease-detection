@@ -20,16 +20,16 @@ class ModelManager:
         """
         self.model_path = model_path
         self.class_names = [
-            'Tomato_mosaic_virus',
-            'Target_Spot',
-            'Bacterial_spot',
-            'Tomato_Yellow_Leaf_Curl_Virus',
-            'Late_blight',
-            'Leaf_Mold',
-            'Early_blight',
-            'Spider_mites Two-spotted_spider_mite',
+            'Tomato___Bacterial_spot',
+            'Tomato___Early_blight',
             'Tomato___healthy',
-            'Septoria_leaf_spot'
+            'Tomato___Late_blight',
+            'Tomato___Leaf_Mold',
+            'Tomato___Septoria_leaf_spot',
+            'Tomato___Spider_mites Two-spotted_spider_mite',
+            'Tomato___Target_Spot',
+            'Tomato___Tomato_mosaic_virus',
+            'Tomato___Tomato_Yellow_Leaf_Curl_Virus'
         ]
         self.num_classes = len(self.class_names)
         
@@ -77,7 +77,7 @@ class ModelManager:
         
         return model
     
-    def create_data_generators(self, data_dir: str, batch_size: int = 32) -> Tuple[ImageDataGenerator, ImageDataGenerator]:
+    def create_data_generators(self, data_dir: str, batch_size: int = 32) -> Tuple[tf.keras.preprocessing.image.DirectoryIterator, tf.keras.preprocessing.image.DirectoryIterator]:
         """
         Create data generators for training and validation.
         
@@ -88,42 +88,68 @@ class ModelManager:
         Returns:
             Tuple of (train_generator, validation_generator)
         """
-        # Data augmentation for training
-        train_datagen = ImageDataGenerator(
-            rescale=1./255,
-            rotation_range=20,
-            width_shift_range=0.2,
-            height_shift_range=0.2,
-            shear_range=0.2,
-            zoom_range=0.2,
-            horizontal_flip=True,
-            fill_mode='nearest',
-            validation_split=0.2
-        )
-        
-        # Only rescaling for validation
-        val_datagen = ImageDataGenerator(
-            rescale=1./255,
-            validation_split=0.2
-        )
-        
-        # Create generators
-        train_generator = train_datagen.flow_from_directory(
-            data_dir,
-            target_size=(224, 224),
-            batch_size=batch_size,
-            class_mode='categorical',
-            subset='training'
-        )
-        
-        validation_generator = val_datagen.flow_from_directory(
-            data_dir,
-            target_size=(224, 224),
-            batch_size=batch_size,
-            class_mode='categorical',
-            subset='validation'
-        )
-        
+        train_dir = os.path.join(data_dir, 'train')
+        val_dir = os.path.join(data_dir, 'val')
+        if os.path.exists(val_dir) and any(os.path.isdir(os.path.join(val_dir, d)) for d in os.listdir(val_dir)):
+            print("[INFO] Using separate 'train' and 'val' directories for data generators.")
+            train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(
+                rescale=1./255,
+                rotation_range=20,
+                width_shift_range=0.2,
+                height_shift_range=0.2,
+                shear_range=0.2,
+                zoom_range=0.2,
+                horizontal_flip=True,
+                fill_mode='nearest'
+            )
+            val_datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1./255)
+            train_generator = train_datagen.flow_from_directory(
+                train_dir,
+                target_size=(224, 224),
+                batch_size=batch_size,
+                class_mode='categorical',
+                shuffle=True
+            )
+            validation_generator = val_datagen.flow_from_directory(
+                val_dir,
+                target_size=(224, 224),
+                batch_size=batch_size,
+                class_mode='categorical',
+                shuffle=False
+            )
+        else:
+            print("[INFO] Using validation_split on 'train' directory for data generators.")
+            train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(
+                rescale=1./255,
+                rotation_range=20,
+                width_shift_range=0.2,
+                height_shift_range=0.2,
+                shear_range=0.2,
+                zoom_range=0.2,
+                horizontal_flip=True,
+                fill_mode='nearest',
+                validation_split=0.2
+            )
+            val_datagen = tf.keras.preprocessing.image.ImageDataGenerator(
+                rescale=1./255,
+                validation_split=0.2
+            )
+            train_generator = train_datagen.flow_from_directory(
+                train_dir,
+                target_size=(224, 224),
+                batch_size=batch_size,
+                class_mode='categorical',
+                subset='training',
+                shuffle=True
+            )
+            validation_generator = val_datagen.flow_from_directory(
+                train_dir,
+                target_size=(224, 224),
+                batch_size=batch_size,
+                class_mode='categorical',
+                subset='validation',
+                shuffle=False
+            )
         return train_generator, validation_generator
     
     def save_model(self, model: tf.keras.Model, model_name: str = "tomato_disease_model") -> str:
