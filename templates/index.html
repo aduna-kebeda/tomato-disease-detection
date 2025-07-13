@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomato Disease Detection</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #0dcaf0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--success-color));
+            color: white;
+            padding: 2rem 0;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+        }
+        
+        .upload-section {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .upload-area {
+            border: 3px dashed var(--primary-color);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: rgba(40, 167, 69, 0.05);
+        }
+        
+        .upload-area:hover {
+            border-color: var(--success-color);
+            background: rgba(40, 167, 69, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .upload-area.dragover {
+            border-color: var(--success-color);
+            background: rgba(40, 167, 69, 0.15);
+            transform: scale(1.02);
+        }
+        
+        .upload-icon {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .preview-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-section {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .prediction-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .prediction-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .confidence-bar {
+            height: 25px;
+            border-radius: 15px;
+            background: linear-gradient(90deg, var(--danger-color), var(--warning-color), var(--success-color));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .confidence-fill {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 15px;
+            transition: width 1s ease;
+        }
+        
+        .disease-info {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .spinner {
+            width: 3rem;
+            height: 3rem;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .alert-custom {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-custom {
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-container">
+            <!-- Header -->
+            <div class="header">
+                <h1><i class="fas fa-leaf"></i> Tomato Disease Detection</h1>
+                <p class="lead mb-0">AI-Powered Plant Health Analysis</p>
+            </div>
+            
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="mb-4">Upload Tomato Leaf Image</h2>
+                        <p class="text-muted mb-4">Upload a clear image of a tomato leaf to detect diseases using our advanced CNN model.</p>
+                        
+                        <!-- Upload Area -->
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h4>Drag & Drop Image Here</h4>
+                            <p class="text-muted">or click to browse</p>
+                            <input type="file" id="fileInput" class="file-input" accept="image/*">
+                            <button class="btn btn-primary btn-custom" onclick="document.getElementById('fileInput').click()">
+                                <i class="fas fa-upload"></i> Choose File
+                            </button>
+                        </div>
+                        
+                        <!-- Image Preview -->
+                        <div class="preview-container" id="previewContainer" style="display: none;">
+                            <h5>Image Preview</h5>
+                            <img id="imagePreview" class="image-preview" alt="Preview">
+                            <div class="mt-3">
+                                <button class="btn btn-success btn-custom" id="analyzeBtn">
+                                    <i class="fas fa-search"></i> Analyze Image
+                                </button>
+                                <button class="btn btn-secondary btn-custom" onclick="resetUpload()">
+                                    <i class="fas fa-redo"></i> Upload New Image
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Loading -->
+                        <div class="loading" id="loading">
+                            <div class="spinner mb-3"></div>
+                            <h5>Analyzing Image...</h5>
+                            <p class="text-muted">Our AI model is processing your image</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Result Section -->
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h3 class="text-center mb-4">Analysis Results</h3>
+                        
+                        <!-- Main Prediction -->
+                        <div class="prediction-card" id="mainPrediction">
+                            <h4 class="text-center mb-3">
+                                <i class="fas fa-microscope"></i> 
+                                <span id="predictedDisease">Disease Name</span>
+                            </h4>
+                            <div class="text-center mb-3">
+                                <span class="badge bg-success fs-6" id="confidenceBadge">95% Confidence</span>
+                            </div>
+                            <div class="confidence-bar mb-3">
+                                <div class="confidence-fill" id="confidenceFill"></div>
+                            </div>
+                            <p class="text-center text-muted" id="confidenceText">
+                                Our model is highly confident in this prediction
+                            </p>
+                        </div>
+                        
+                        <!-- Top Predictions -->
+                        <div class="prediction-card">
+                            <h5 class="mb-3">
+                                <i class="fas fa-chart-bar"></i> Top Predictions
+                            </h5>
+                            <div id="topPredictions">
+                                <!-- Top predictions will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Disease Information -->
+                        <div class="disease-info" id="diseaseInfo">
+                            <h5>
+                                <i class="fas fa-info-circle"></i> About This Disease
+                            </h5>
+                            <div id="diseaseDescription">
+                                <!-- Disease information will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Recommendations -->
+                        <div class="disease-info">
+                            <h5>
+                                <i class="fas fa-lightbulb"></i> Recommendations
+                            </h5>
+                            <div id="recommendations">
+                                <!-- Recommendations will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Section -->
+            <div class="upload-section">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h3 class="text-center mb-5">Why Choose Our System?</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <h5>Advanced AI</h5>
+                                    <p class="text-muted">Powered by state-of-the-art CNN with transfer learning for superior accuracy.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <h5>Fast Analysis</h5>
+                                    <p class="text-muted">Optimized with TensorFlow Lite for instant predictions and real-time results.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature-card">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h5>Comprehensive</h5>
+                                    <p class="text-muted">Detects 8 different tomato diseases plus healthy leaves with high precision.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Tomato Disease Detection System. Built with Python, TensorFlow, and Flask.</p>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Disease information database
+        const diseaseInfo = {
+            'Tomato_mosaic_virus': {
+                name: 'Tomato Mosaic Virus',
+                description: 'A viral disease that causes mottled patterns and stunted growth in tomato plants.',
+                symptoms: 'Mottled yellow and green patterns, stunted growth, distorted leaves, reduced fruit quality',
+                recommendations: [
+                    'Remove infected plants immediately',
+                    'Control aphid populations',
+                    'Disinfect tools between plants',
+                    'Plant resistant varieties',
+                    'Avoid handling plants when wet'
+                ]
+            },
+            'Target_Spot': {
+                name: 'Target Spot',
+                description: 'A fungal disease caused by Corynespora cassiicola that creates target-like lesions.',
+                symptoms: 'Circular lesions with concentric rings, yellow halos, leaf drop, brown spots',
+                recommendations: [
+                    'Remove infected plant debris',
+                    'Improve air circulation',
+                    'Apply fungicides containing chlorothalonil',
+                    'Avoid overhead watering',
+                    'Space plants properly'
+                ]
+            },
+            'Bacterial_spot': {
+                name: 'Bacterial Spot',
+                description: 'A bacterial disease caused by Xanthomonas species that affects leaves, stems, and fruits.',
+                symptoms: 'Small, dark, water-soaked lesions, yellow halos, leaf drop, fruit spots',
+                recommendations: [
+                    'Remove infected plants and debris',
+                    'Avoid overhead irrigation',
+                    'Use disease-free seeds',
+                    'Apply copper-based bactericides',
+                    'Practice crop rotation'
+                ]
+            },
+            'Tomato_Yellow_Leaf_Curl_Virus': {
+                name: 'Tomato Yellow Leaf Curl Virus',
+                description: 'A viral disease transmitted by whiteflies that causes severe stunting and yield loss.',
+                symptoms: 'Yellowing and curling of leaves, stunted growth, reduced fruit size, upward leaf curling',
+                recommendations: [
+                    'Control whitefly populations',
+                    'Remove infected plants immediately',
+                    'Use reflective mulches',
+                    'Plant resistant varieties',
+                    'Apply insecticides if necessary'
+                ]
+            },
+            'Late_blight': {
+                name: 'Late Blight',
+                description: 'A devastating disease caused by Phytophthora infestans that can quickly destroy entire crops.',
+                symptoms: 'Water-soaked lesions, white fungal growth, rapid plant death, dark lesions',
+                recommendations: [
+                    'Immediately remove infected plants',
+                    'Apply copper-based fungicides',
+                    'Improve drainage and air circulation',
+                    'Avoid overhead irrigation',
+                    'Plant resistant varieties'
+                ]
+            },
+            'Leaf_Mold': {
+                name: 'Leaf Mold',
+                description: 'A fungal disease caused by Passalora fulva that thrives in humid conditions.',
+                symptoms: 'Yellow spots on upper leaf surfaces, olive-green spores on undersides, leaf yellowing',
+                recommendations: [
+                    'Reduce humidity in greenhouse environments',
+                    'Improve air circulation',
+                    'Remove infected leaves',
+                    'Apply fungicides if necessary',
+                    'Space plants adequately'
+                ]
+            },
+            'Early_blight': {
+                name: 'Early Blight',
+                description: 'A fungal disease caused by Alternaria solani that affects tomato leaves, stems, and fruits.',
+                symptoms: 'Dark brown spots with concentric rings, yellowing leaves, defoliation, target-like lesions',
+                recommendations: [
+                    'Remove and destroy infected plant debris',
+                    'Improve air circulation around plants',
+                    'Apply fungicides containing chlorothalonil or copper',
+                    'Avoid overhead watering',
+                    'Rotate crops annually'
+                ]
+            },
+            'Spider_mites Two-spotted_spider_mite': {
+                name: 'Spider Mites (Two-spotted)',
+                description: 'Tiny arachnids that feed on plant sap, causing stippling and webbing.',
+                symptoms: 'Fine webbing, yellow stippling, leaf discoloration, plant stress, tiny moving dots',
+                recommendations: [
+                    'Spray plants with water to dislodge mites',
+                    'Apply insecticidal soap or neem oil',
+                    'Introduce beneficial insects like ladybugs',
+                    'Maintain adequate humidity',
+                    'Remove heavily infested leaves'
+                ]
+            },
+            'Tomato___healthy': {
+                name: 'Healthy Tomato',
+                description: 'Your tomato plant appears to be healthy with no signs of disease.',
+                symptoms: 'Normal green leaves, good growth, no visible disease symptoms, vibrant color',
+                recommendations: [
+                    'Continue regular watering and fertilization',
+                    'Monitor for early signs of disease',
+                    'Maintain good air circulation',
+                    'Practice crop rotation',
+                    'Keep garden clean and weed-free'
+                ]
+            },
+            'Septoria_leaf_spot': {
+                name: 'Septoria Leaf Spot',
+                description: 'A fungal disease caused by Septoria lycopersici that creates small, circular spots.',
+                symptoms: 'Small, dark spots with gray centers, yellow halos, leaf drop, circular lesions',
+                recommendations: [
+                    'Remove infected leaves and debris',
+                    'Improve air circulation',
+                    'Avoid overhead watering',
+                    'Apply fungicides containing copper or chlorothalonil',
+                    'Mulch around plants'
+                ]
+            }
+        };
+        
+        // File upload handling
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewContainer = document.getElementById('previewContainer');
+        const imagePreview = document.getElementById('imagePreview');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const loading = document.getElementById('loading');
+        const resultSection = document.getElementById('resultSection');
+        
+        // Drag and drop functionality
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                showAlert('Please select an image file.', 'danger');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview.src = e.target.result;
+                previewContainer.style.display = 'block';
+                resultSection.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function resetUpload() {
+            fileInput.value = '';
+            previewContainer.style.display = 'none';
+            resultSection.style.display = 'none';
+            uploadArea.classList.remove('dragover');
+        }
+        
+        // Analysis functionality
+        analyzeBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (!file) {
+                showAlert('Please select an image first.', 'warning');
+                return;
+            }
+            
+            loading.style.display = 'block';
+            previewContainer.style.display = 'none';
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.error) {
+                    showAlert(result.error, 'danger');
+                } else {
+                    displayResults(result);
+                }
+            } catch (error) {
+                showAlert('Error analyzing image. Please try again.', 'danger');
+                console.error('Error:', error);
+            } finally {
+                loading.style.display = 'none';
+                previewContainer.style.display = 'block';
+            }
+        });
+        
+        function displayResults(result) {
+            const disease = result.predicted_class;
+            const confidence = result.confidence;
+            const diseaseData = diseaseInfo[disease] || diseaseInfo['healthy'];
+            
+            // Update main prediction
+            document.getElementById('predictedDisease').textContent = diseaseData.name;
+            document.getElementById('confidenceBadge').textContent = `${(confidence * 100).toFixed(1)}% Confidence`;
+            document.getElementById('confidenceFill').style.width = `${confidence * 100}%`;
+            document.getElementById('confidenceText').textContent = 
+                confidence > 0.8 ? 'Our model is highly confident in this prediction' :
+                confidence > 0.6 ? 'Our model is moderately confident in this prediction' :
+                'Our model has low confidence in this prediction';
+            
+            // Update top predictions
+            const topPredictionsDiv = document.getElementById('topPredictions');
+            topPredictionsDiv.innerHTML = '';
+            
+            result.top_predictions.forEach((pred, index) => {
+                const predData = diseaseInfo[pred.class] || diseaseInfo['healthy'];
+                const predDiv = document.createElement('div');
+                predDiv.className = 'd-flex justify-content-between align-items-center mb-2';
+                predDiv.innerHTML = `
+                    <div>
+                        <strong>${predData.name}</strong>
+                        <small class="text-muted d-block">${pred.percentage.toFixed(1)}% confidence</small>
+                    </div>
+                    <div class="progress" style="width: 100px; height: 8px;">
+                        <div class="progress-bar bg-success" style="width: ${pred.percentage}%"></div>
+                    </div>
+                `;
+                topPredictionsDiv.appendChild(predDiv);
+            });
+            
+            // Update disease information
+            document.getElementById('diseaseDescription').innerHTML = `
+                <p><strong>Description:</strong> ${diseaseData.description}</p>
+                <p><strong>Symptoms:</strong> ${diseaseData.symptoms}</p>
+            `;
+            
+            // Update recommendations
+            const recommendationsDiv = document.getElementById('recommendations');
+            recommendationsDiv.innerHTML = '<ul class="list-unstyled">';
+            diseaseData.recommendations.forEach(rec => {
+                recommendationsDiv.innerHTML += `<li><i class="fas fa-check text-success me-2"></i>${rec}</li>`;
+            });
+            recommendationsDiv.innerHTML += '</ul>';
+            
+            // Show results
+            resultSection.style.display = 'block';
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-custom alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            const container = document.querySelector('.upload-section');
+            container.insertBefore(alertDiv, container.firstChild);
+            
+            // Auto-dismiss after 5 seconds
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.remove();
+                }
+            }, 5000);
+        }
+        
+        // Check system health on page load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/health');
+                const health = await response.json();
+                
+                if (!health.model_loaded) {
+                    showAlert('Warning: Model not loaded. Please ensure the model has been trained.', 'warning');
+                }
+            } catch (error) {
+                console.error('Health check failed:', error);
+            }
+        });
+    </script>
+</body>
+</html> 
